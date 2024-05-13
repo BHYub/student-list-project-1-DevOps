@@ -68,58 +68,53 @@ Now it is time to explain you each file's role:
 
 ## Build of the API image with Dockerfile and test 
 
-POZOS will give you information to build the API container
-
 - Base image
 
-To build API image you must use "python:3.8-buster"
-
-- Maintainer
-
-Please don't forget to specify the maintainer information
+ "python:3.8-buster"
 
 - Add the source code
 
-You need to copy the source code of the API in the container at the root "/" path
+I copied the source code of the API in the container at the root "/" path
 
 - Prerequisite
 
-The API is using FLASK engine,  you need to install some package 
+The API is using FLASK engine,  so I installed some package 
 ```bash
 apt update -y && apt install python-dev python3-dev libsasl2-dev python-dev libldap2-dev libssl-dev -y
 ```
-Copy the requirements.txt file into the container in the root "/" directory to install the packages needed to start up our application
+I copied the requirements.txt file into the container in the root "/" directory to install the packages needed to start up our application
 
-to launch the installation, use this command
+to launch the installation, I used this
 
 ```bash
 pip3 install -r /requirements.txt
 ```
 - Persistent data (volume)
 
-Create data folder at the root "/" where data will be stored and declare it as a volume
+I created data folder at the root "/" where data will be stored and declare it as a volume
 
-You will use this folder to mount student list
+I will use this folder to mount student list
 
 - API Port
 
-To interact with this API expose 5000 port
+To interact with this API I exposed 5000 port
 
 - CMD
 
-When container start, it must run the student_age.py (copied at step 4), so it should be something like
+When container start, it must run the student_age.py , so it should be something like
 ```bash 
 CMD [ "python3", "./student_age.py" ]
 ```
 
-Build your image and try to run it (don't forget to mount *student_age.json* file at */data/student_age.json* in the container), check logs and verify that the container is listening and is  ready to answer
+So Dockerfile is finished and I have to build the image and test it 
 
-Run this command to make sure that the API correctly responding (take a screenshot for delivery purpose)
-NB: Start your container using this specific port to reach it
-Port: 5000
-```bash 
-curl -u toto:python -X GET http://<host IP>:<API exposed port>/pozos/api/v1.0/get_student_ages
-```
+![Building image](https://drive.google.com/file/d/14YP_GCpiR7FTwz9HjNyaB6U88i4mM3dq/view?usp=sharing)
+
+
+Running the container and testing it
+![running and testing the API](https://drive.google.com/file/d/1Ho0fvbVRiz0RHKlcH84J46DzElnRpgj1/view?usp=sharing)
+
+It's running, nice!
 
 ## Infrastructure As Code (5 points)
 
