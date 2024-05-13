@@ -109,7 +109,9 @@ rm -rf /var/lib/apt/lists/* \
 
 And we can get an image of 358 Mb from the initial 1.1Go
 ![Initial Image](/images/Image%20api.PNG)
+
 to
+
 ![Final Image](/images/api%20opti.PNG)
 
 - Persistent data (volume)
