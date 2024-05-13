@@ -108,9 +108,9 @@ rm -rf /var/lib/apt/lists/* \
 ```
 
 And we can get an image of 358 Mb from the initial 1.1Go
-[Initial Image](/images/Image%20api.PNG)
+![Initial Image](/images/Image%20api.PNG)
 to
-[Final Image](/images/api%20opti.PNG)
+![Final Image](/images/api%20opti.PNG)
 
 - Persistent data (volume)
 
@@ -157,12 +157,12 @@ The **_docker-compose.yml_** file will deploy two services :
 
 Runing your docker-compose.yml
 
-[Docker Compose Run](/images/compose%20up.PNG)
+![Docker Compose Run](/images/compose%20up.PNG)
 
 Finally, I reach the website and click on the bouton "List Student"
 
 And It's alive !!! ... I mean it works... !!!
-[Website working page](/images/final%20app.PNG)
+![Website working page](/images/final%20app.PNG)
 
 ## Docker Registry
 
@@ -179,7 +179,7 @@ docker run -d -p 8090:80 -e NGINX_PROXY_PASS_URL=http://registry-eazy:5050 --net
 
 ```
 
-[Pushed image](/images/registry.PNG)
+![Pushed image](/images/registry.PNG)
 
 Nice ! now lets deliver the work to ***eazytrainingfr@gmail.com***
 
