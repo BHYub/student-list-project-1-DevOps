@@ -1,0 +1,36 @@
+name: IaC of student age list
+
+services:
+
+
+    api_student_age:
+        container_name: api_student_age
+        volumes:
+            - ./simple_api/student_age.json:/data
+        networks:
+            - appnet
+        image: api_student_age
+
+
+
+
+    frontend_student_age:
+        container_name: frontend_student_age
+        volumes:
+            - ./website/:var/www/html
+        environment:
+            - USERNAME=toto
+            - PASSWORD=python
+        networks:
+            - appnet
+        depends_on:
+            - api_student_age
+        image: php:apache
+
+
+
+
+networks:
+    appnet:
+        external: true
+        name: appnet
