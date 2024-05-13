@@ -6,10 +6,12 @@ services:
     api_student_age:
         container_name: api_student_age
         volumes:
-            - ./simple_api/student_age.json:/data
+            - ./simple_api/:/data
         networks:
             - appnet
         image: api_student_age
+        ports:
+            - "5000:5000"
 
 
 
@@ -17,7 +19,7 @@ services:
     frontend_student_age:
         container_name: frontend_student_age
         volumes:
-            - ./website/:var/www/html
+            - ./website/:/var/www/html
         environment:
             - USERNAME=toto
             - PASSWORD=python
@@ -26,7 +28,8 @@ services:
         depends_on:
             - api_student_age
         image: php:apache
-
+        ports:
+            - "80:80"
 
 
 
